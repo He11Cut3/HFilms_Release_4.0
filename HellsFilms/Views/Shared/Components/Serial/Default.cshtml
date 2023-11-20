@@ -1,0 +1,28 @@
+﻿@model List<BasicFilm>
+@foreach (var movie in Model.OrderByDescending(m => m.Id).Take(12))
+{
+    <div class="movie-item movie-item-two mb-30">
+        <div class="movie-poster">
+            <a asp-controller="Serial" asp-action="Details" asp-route-kinopoiskId="@movie.Id"><img src="@movie.PosterUrl" style="height: 300px; object-fit: cover;" alt=""></a>
+        </div>
+
+
+
+
+        <div class="movie-content">
+
+            <h5 class="title" style="max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><a asp-controller="Serial" asp-action="Details" asp-route-kinopoiskId="@movie.Id">@movie.PrimaryTitle</a></h5>
+            <div class="movie-content-bottom">
+                <ul>
+                    <li class="tag">
+                        <a>HD</a>
+                        <a>Ru</a>
+                    </li>
+                    <li>
+                        <span class="like"><i class="fas fa-star"></i> @movie.Rating</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
